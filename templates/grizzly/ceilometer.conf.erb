@@ -1,0 +1,39 @@
+[DEFAULT]
+
+# Logging
+log_dir=/var/log/ceilometer
+<% if @logdebug %>
+debug=true
+verbose=true
+<% end %>
+
+# Service credentials
+os_username=<%= keystone_user %>
+os_password=<%= keystone_password %>                  
+os_tenant_name=<%= keystone_service_tenant %>
+os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
+
+# RabbitMQ
+rabbit_hosts="<%= rabbit_hosts %>"
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_password %>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
+rabbit_ha_queues=True
+rabbit_durable_queues=True
+rabbit_use_ssl=True
+
+auth_strategy=keystone
+database_connection=mongodb://<%= mongodb_host %>:27017/ceilometer
+
+
+[keystone_authtoken]
+auth_host = <%= keystone_host %>
+auth_port = 35357
+auth_protocol = <%= keystone_protocol %>
+admin_tenant_name = <%= keystone_service_tenant %>
+admin_user = <%= keystone_user %>
+admin_password = <%= keystone_password %>
+signing_dir = /var/lib/ceilometer/keystone-signing
+# Workaround for https://bugs.launchpad.net/nova/+bug/1154809                        
+auth_version = v2.0
+
