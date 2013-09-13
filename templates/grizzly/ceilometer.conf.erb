@@ -23,8 +23,16 @@ rabbit_durable_queues=True
 rabbit_use_ssl=True
 
 auth_strategy=keystone
-database_connection=mongodb://<%= mongodb_host %>:27017/ceilometer
+metering_secret=<%= metering_secret %>
+database_connection=<%= database_connection %>
 
+disable_local_storage=<%= disable_local_storage %>
+forward_metering_data=<%= forward_metering_data %>
+
+<% if forwarder_transport_url %>
+[dispatcher_rpc]
+transport_url=<%= forwarder_transport_url %>
+<% end %>
 
 [keystone_authtoken]
 auth_host = <%= keystone_host %>
