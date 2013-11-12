@@ -1,5 +1,6 @@
 class ceilometer($keystone_user,
                  $keystone_password,
+                 $keystone_region,
                  $rabbit_hosts,
                  $rabbit_user,
                  $rabbit_password,
@@ -30,7 +31,7 @@ class ceilometer($keystone_user,
 
 }
 
-class ceilometer::node inherits ceilometer {
+class ceilometer::node($sample_source='openstack') inherits ceilometer {
 
   File['ceilometer-config'] {
     content => template("ceilometer/${openstack_version}/ceilometer-node.conf.erb"),
