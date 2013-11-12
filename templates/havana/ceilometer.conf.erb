@@ -7,15 +7,6 @@ debug=true
 verbose=true
 <% end %>
 
-# Service credentials
-os_username=<%= keystone_user %>
-os_password=<%= keystone_password %>
-os_tenant_name=<%= keystone_service_tenant %>
-os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
-<% if keystone_region %>
-os_region_name=<%= keystone_region %>
-<% end %>
-
 # RabbitMQ
 rabbit_hosts="<%= rabbit_hosts %>"
 rabbit_userid=<%= rabbit_user %>
@@ -26,16 +17,19 @@ rabbit_durable_queues=True
 rabbit_use_ssl=True
 
 auth_strategy=keystone
-metering_secret=<%= metering_secret %>
-database_connection=<%= database_connection %>
+database_connection=mongodb://<%= mongodb_host %>:27017/ceilometer
 
-disable_local_storage=<%= disable_local_storage %>
-forward_metering_data=<%= forward_metering_data %>
 
-<% if forwarder_transport_url %>
-[dispatcher_rpc]
-transport_url=<%= forwarder_transport_url %>
+[service_credentials]
+# Service credentials
+os_username=<%= keystone_user %>
+os_password=<%= keystone_password %>
+os_tenant_name=<%= keystone_service_tenant %>
+os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
+<% if keystone_region %>
+os_region_name=<%= keystone_region %>
 <% end %>
+
 
 [keystone_authtoken]
 auth_host = <%= keystone_host %>
