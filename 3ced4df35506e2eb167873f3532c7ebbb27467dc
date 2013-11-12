@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAATn//+Wg\u003d",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2013-11-12T04:23:23Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "3ced4df35506e2eb167873f3532c7ebbb27467dc",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn//+W0\u003d",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2013-11-12T04:23:23Z",
+      "side": 1,
+      "message": "Make it optional",
+      "revId": "3ced4df35506e2eb167873f3532c7ebbb27467dc",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn//+Ws\u003d",
+        "filename": "templates/grizzly/ceilometer-node.conf.erb",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2013-11-12T04:23:23Z",
+      "side": 1,
+      "message": "Can go",
+      "revId": "3ced4df35506e2eb167873f3532c7ebbb27467dc",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn//+Wo\u003d",
+        "filename": "templates/grizzly/ceilometer-node.conf.erb",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2013-11-12T04:23:23Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "revId": "3ced4df35506e2eb167873f3532c7ebbb27467dc",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn//+Ww\u003d",
+        "filename": "templates/havana/ceilometer-node.conf.erb",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2013-11-12T04:23:23Z",
+      "side": 1,
+      "message": "Remove this :-)",
+      "revId": "3ced4df35506e2eb167873f3532c7ebbb27467dc",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn//+Wk\u003d",
+        "filename": "templates/havana/ceilometer.conf.erb",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2013-11-12T04:23:23Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "3ced4df35506e2eb167873f3532c7ebbb27467dc",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
