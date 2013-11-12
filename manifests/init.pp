@@ -1,5 +1,6 @@
 class ceilometer($keystone_user,
                  $keystone_password,
+                 $keystone_region=false,
                  $rabbit_hosts,
                  $rabbit_user,
                  $rabbit_password,

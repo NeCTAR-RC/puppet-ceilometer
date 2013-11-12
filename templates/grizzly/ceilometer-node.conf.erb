@@ -12,6 +12,9 @@ os_username=<%= keystone_user %>
 os_password=<%= keystone_password %>
 os_tenant_name=<%= keystone_service_tenant %>
 os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
+<% if keystone_region %>
+os_region_name=<%= keystone_region %>
+<% end %>
 
 # RabbitMQ
 rabbit_hosts="<%= rabbit_hosts %>"
