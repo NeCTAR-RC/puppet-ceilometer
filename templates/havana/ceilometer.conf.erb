@@ -17,8 +17,11 @@ rabbit_durable_queues=True
 rabbit_use_ssl=True
 
 auth_strategy=keystone
-database_connection=mongodb://<%= mongodb_host %>:27017/ceilometer
+metering_secret=<%= metering_secret %>
+database_connection=<%= database_connection %>
 
+disable_local_storage=<%= disable_local_storage %>
+forward_metering_data=<%= forward_metering_data %>
 
 [service_credentials]
 # Service credentials
@@ -28,8 +31,11 @@ os_tenant_name=<%= keystone_service_tenant %>
 os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
 <% if keystone_region %>
 os_region_name=<%= keystone_region %>
-<% end %>
 
+<% if forwarder_transport_url %>
+[dispatcher_rpc]
+transport_url=<%= forwarder_transport_url %>
+<% end %>
 
 [keystone_authtoken]
 auth_host = <%= keystone_host %>
