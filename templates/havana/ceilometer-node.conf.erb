@@ -17,11 +17,12 @@ rabbit_ha_queues=True
 rabbit_durable_queues=True
 rabbit_use_ssl=True
 
+metering_secret=<%= metering_secret %>
 host=<%= hostname %>
 
 
-#not used but needed for upgrades
-database_connection=sqlite:////var/lib/ceilometer/ceilometer.sqlite
+#not used but needed for apt upgrades
+database_connection=<%= database_connection %>
 
 
 [service_credentials]
