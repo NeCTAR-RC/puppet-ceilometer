@@ -1,0 +1,8 @@
+Code-Review+1: Devendran Jagadisan <devendran.jagadisan@unimelb.edu.au>
+Verified+1: Jenkins <rc-melbourne@nectar.org.au>
+Code-Review+1: Russell Sim <russell.sim@gmail.com>
+Submitted-by: Russell Sim <russell.sim@gmail.com>
+Submitted-at: Fri, 22 Nov 2013 10:12:10 +1100
+Reviewed-on: https://review.rc.nectar.org.au/1000
+Project: NeCTAR-RC/puppet-ceilometer
+Branch: refs/heads/master
