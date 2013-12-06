@@ -1,0 +1,7 @@
+Code-Review+2: Kieran Spear <kispear@gmail.com>
+Verified+1: Jenkins <rc-melbourne@nectar.org.au>
+Submitted-by: Sam Morrison <sam.morrison@unimelb.edu.au>
+Submitted-at: Fri, 06 Dec 2013 11:50:20 +1100
+Reviewed-on: https://review.rc.nectar.org.au/1043
+Project: NeCTAR-RC/puppet-ceilometer
+Branch: refs/heads/master
