@@ -20,8 +20,8 @@ auth_strategy=keystone
 metering_secret=<%= metering_secret %>
 database_connection=<%= database_connection %>
 
-disable_local_storage=<%= disable_local_storage %>
-forward_metering_data=<%= forward_metering_data %>
+[collector]
+dispatcher=<%= dispatchers %>
 
 [service_credentials]
 # Service credentials
