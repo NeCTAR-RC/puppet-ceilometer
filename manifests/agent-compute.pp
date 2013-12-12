@@ -12,7 +12,6 @@ class ceilometer::agent-compute inherits ceilometer::node {
 
   nagios::nrpe::service {'service_ceilometer_agent_compute':
     check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a /usr/bin/ceilometer-agent-compute",
-    use           => 'ignored-service',
   }
 
 }
