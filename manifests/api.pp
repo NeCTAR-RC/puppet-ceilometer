@@ -15,6 +15,10 @@ class ceilometer::api inherits ceilometer {
     servicegroups => 'openstack-endpoints';
   }
 
+  file {'/etc/ceilometer/policy.json':
+    source => 'puppet:///modules/ceilometer/policy.json',
+  }
+
   nagios::nrpe::service {'service_ceilometer_api':
     check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a /usr/bin/ceilometer-api";
   }
