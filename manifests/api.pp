@@ -1,5 +1,7 @@
 class ceilometer::api inherits ceilometer {
 
+  $openstack_version = hiera('openstack_version')
+
   package {'ceilometer-api':
     ensure => installed,
   }
@@ -16,7 +18,7 @@ class ceilometer::api inherits ceilometer {
   }
 
   file {'/etc/ceilometer/policy.json':
-    source => 'puppet:///modules/ceilometer/policy.json',
+    source => "puppet:///modules/ceilometer/${openstack_version}/policy.json",
   }
 
   nagios::nrpe::service {'service_ceilometer_api':
