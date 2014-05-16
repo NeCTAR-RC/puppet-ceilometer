@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAT3//9lQ\u003d",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2014-05-16T06:31:28Z",
+      "side": 1,
+      "message": "What happens if no \"rotate X\" option is specified?\n\nCould we make it weekly for prod and daily for test like the other module via a parameter?",
+      "revId": "0a535cff1a849c44e9eed0a0a14e3845b52aaf90",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
