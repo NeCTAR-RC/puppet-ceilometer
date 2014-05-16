@@ -11,6 +11,7 @@ class ceilometer($keystone_user,
                  $forwarder_transport_url=false,
                  $metering_secret,
                  $database_connection='sqlite:////var/lib/ceilometer/ceilometer.sqlite',
+                 $logrotation='weekly',
 )
 {
 
@@ -30,6 +31,11 @@ class ceilometer($keystone_user,
     require => Package['ceilometer-common'],
   }
 
+  logrotate::rule { 'ceilometer':
+    ensure  => present,
+    path    => '/var/log/ceilometer/*.log',
+    options => [ 'rotate 4', $logrotation, 'missingok', 'compress', 'delaycompress', 'notifempty' ],
+  }
 }
 
 class ceilometer::node inherits ceilometer {
