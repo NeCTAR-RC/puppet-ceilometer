@@ -30,6 +30,11 @@ class ceilometer($keystone_user,
     require => Package['ceilometer-common'],
   }
 
+  logrotate::rule { 'ceilometer':
+    ensure  => present,
+    path    => '/var/log/ceilometer/*.log',
+    options => [ 'daily', 'missingok', 'compress', 'delaycompress', 'notifempty' ],
+  }
 }
 
 class ceilometer::node inherits ceilometer {
