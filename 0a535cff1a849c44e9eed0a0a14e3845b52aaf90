@@ -16,6 +16,24 @@
       "revId": "0a535cff1a849c44e9eed0a0a14e3845b52aaf90",
       "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAT3//9kE\u003d",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000085
+      },
+      "writtenOn": "2014-05-19T00:11:31Z",
+      "side": 1,
+      "message": "Oops that\u0027s my bad no specifying rotate. And yes I\u0027ll include the rotation parameter.",
+      "parentUuid": "AAAAT3//9lQ\u003d",
+      "revId": "0a535cff1a849c44e9eed0a0a14e3845b52aaf90",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
     }
   ]
 }
