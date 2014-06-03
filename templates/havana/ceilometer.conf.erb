@@ -20,6 +20,9 @@ auth_strategy=keystone
 metering_secret=<%= metering_secret %>
 database_connection=<%= database_connection %>
 
+[database]
+time_to_live = <%= db_ttl %>
+
 [collector]
 dispatcher=<%= dispatchers %>
 
