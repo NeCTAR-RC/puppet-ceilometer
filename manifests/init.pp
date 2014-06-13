@@ -37,6 +37,12 @@ class ceilometer($keystone_user,
     path    => '/var/log/ceilometer/*.log',
     options => [ 'rotate 4', $logrotation, 'missingok', 'compress', 'delaycompress', 'notifempty' ],
   }
+
+  file { '/var/log/ceilometer':
+    ensure  => directory,
+    mode    => '0770',
+    require => Package['ceilometer-common'],
+  }
 }
 
 class ceilometer::node inherits ceilometer {
