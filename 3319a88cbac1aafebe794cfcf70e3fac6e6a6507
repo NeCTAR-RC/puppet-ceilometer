@@ -1,0 +1,8 @@
+Code-Review+1: Devendran Jagadisan <devendran.jagadisan@unimelb.edu.au>
+Verified+1: Jenkins <rc-melbourne@nectar.org.au>
+Code-Review+1: Andy Botting <andy@andybotting.com>
+Submitted-by: Sam Morrison <sam.morrison@unimelb.edu.au>
+Submitted-at: Fri, 25 Jul 2014 11:27:34 +1000
+Reviewed-on: https://review.rc.nectar.org.au/1514
+Project: NeCTAR-RC/puppet-ceilometer
+Branch: refs/heads/master
