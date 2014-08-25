@@ -15,7 +15,7 @@ class ceilometer::collector inherits ceilometer {
   if $openstack_version == 'havana' {
     $check_count = 1
   } else {
-    $check_count = $processorcount
+    $check_count = 2
   }
 
   nagios::nrpe::service {'service_ceilometer_collector':
