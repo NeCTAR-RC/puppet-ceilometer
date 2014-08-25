@@ -13,7 +13,7 @@ class ceilometer::api inherits ceilometer {
   }
 
   nagios::service {'ceilometer-api':
-    check_command => 'http_port!8777',
+    check_command => 'check_ceilometer!8777',
     servicegroups => 'openstack-endpoints';
   }
 
@@ -31,4 +31,11 @@ class ceilometer::api inherits ceilometer {
     action => 'accept',
   }
 
+}
+class ceilometer::api::nagios-checks {
+  # These are checks that can be run by the nagios server.
+  nagios::command {
+    'check_ceilometer':
+      check_command => '/usr/lib/nagios/plugins/check_http -p \'$ARG1$\' -e 401 -H \'$HOSTADDRESS$\' -I \'$HOSTADDRESS$\'';
+  }
 }
