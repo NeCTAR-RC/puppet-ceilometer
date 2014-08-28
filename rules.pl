@@ -1,24 +1,23 @@
 % -*- mode: prolog -*-
 
-sum_list([], 0).
-sum_list([H | Rest], Sum) :- sum_list(Rest,Tmp), Sum is H + Tmp.
+submit_rule(submit(CR, V)) :-
+  sum(2, 'Code-Review', CR),
+  gerrit:max_with_block(-1, 1, 'Verified', V).
 
-add_category_min_score(In, Category, Min,  P) :-
-  gerrit:commit_author(A),
-  findall(X, gerrit:commit_label(label(Category,X),R),Y),
-  findall(X, gerrit:commit_label(label(Category,X),A),Z),
-  sum_list(Y, Total_sum),
-  sum_list(Z, Author_sum),
-  Sum is Total_sum - Author_sum,
-  Sum >= Min, !,
-  P = [label(Category, ok(R)) | In].
+% Sum the votes in a category. Uses a helper function score/2
+% to select out only the score values the given category.
+sum(VotesNeeded, Category, label(Category, ok(_))) :-
+  findall(Score, score(Category, Score), All),
+  sum_list(All, Sum),
+  Sum >= VotesNeeded,
+  !.
+sum(VotesNeeded, Category, label(Category, need(VotesNeeded))).
 
-add_category_min_score(In, Category,Min,P) :-
-  P = [label(Category,need(Min)) | In].
+score(Category, Score) :-
+  gerrit:commit_label(label(Category, Score), User).
 
-submit_rule(S) :-
-  gerrit:default_submit(X),
-  X =.. [submit | Ls],
-  gerrit:remove_label(Ls,label('Code-Review',_),NoCR),
-  add_category_min_score(NoCR,'Code-Review', 2, Labels),
-  S =.. [submit | Labels].
+% Simple Prolog routine to sum a list of integers.
+sum_list(List, Sum)   :- sum_list(List, 0, Sum).
+sum_list([X|T], Y, S) :- Z is X + Y, sum_list(T, Z, S).
+sum_list([], S, S).
+
