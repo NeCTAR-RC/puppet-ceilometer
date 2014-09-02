@@ -37,5 +37,7 @@ class ceilometer::api::nagios-checks {
   nagios::command {
     'check_ceilometer':
       check_command => '/usr/lib/nagios/plugins/check_http -p \'$ARG1$\' -e 401 -H \'$HOSTADDRESS$\' -I \'$HOSTADDRESS$\'';
+    'check_ceilometer_ssl':
+      check_command => '/usr/lib/nagios/plugins/check_http --ssl -p \'$ARG1$\' -e 401 -H \'$HOSTADDRESS$\' -I \'$HOSTADDRESS$\'';
   }
 }
