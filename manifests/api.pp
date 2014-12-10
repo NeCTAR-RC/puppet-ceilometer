@@ -1,5 +1,9 @@
-class ceilometer::api inherits ceilometer {
+class ceilometer::api($workers=1) inherits ceilometer {
 
+  include uwsgi
+
+  $worker_name = 'uwsgi-worker-ceilometer-api'
+  $wsgi_file = '/etc/ceilometer/app.wsgi'
   $openstack_version = hiera('openstack_version')
 
   package {'ceilometer-api':
@@ -7,7 +11,7 @@ class ceilometer::api inherits ceilometer {
   }
 
   service {'ceilometer-api':
-    ensure    => running,
+    ensure    => 'stopped',
     subscribe => File['ceilometer-config'],
     require   => Package['ceilometer-api'],
   }
@@ -21,8 +25,33 @@ class ceilometer::api inherits ceilometer {
     source => "puppet:///modules/ceilometer/${openstack_version}/policy.json",
   }
 
+  file {$wsgi_file:
+    source => "puppet:///modules/ceilometer/${openstack_version}/app.wsgi",
+    owner => 'ceilometer',
+    group => 'ceilometer',
+  }
+
   nagios::nrpe::service {'service_ceilometer_api':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a /usr/bin/ceilometer-api";
+    check_command => "/usr/lib/nagios/plugins/check_procs -c ${workers}:${workers} -u ceilometer -a ${worker_name}";
+  }
+
+  uwsgi::manage_app {'ceilometer-api':
+    ensure => 'present',
+    uid => 'ceilometer',
+    gid => 'ceilometer',
+    config => {
+      http-socket => ':8777',
+      master => 'true',
+      plugin => 'python',
+      enable-threads => 'true',
+      need-app => 'true',
+      buffer-size => '16384',
+      timeout => '300',
+      pecan => $wsgi_file,
+      processes => $workers,
+      procname => $worker_name,
+      procname-master => 'uwsgi-master-ceilometer-api',
+    }
   }
 
   firewall {'100 ceilometer':
