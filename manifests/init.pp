@@ -13,6 +13,7 @@ class ceilometer($keystone_user,
                  $database_connection='sqlite:////var/lib/ceilometer/ceilometer.sqlite',
                  $logrotation='weekly',
                  $db_ttl=7776000,
+		$agent_use_fqdn=false,
 )
 {
 
