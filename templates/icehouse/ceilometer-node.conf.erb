@@ -18,7 +18,11 @@ rabbit_durable_queues=True
 rabbit_use_ssl=True
 
 metering_secret=<%= metering_secret %>
+<% if agent_use_fqdn -%>
+host=<%= fqdn %>
+<% else -%>
 host=<%= hostname %>
+<% end -%>
 
 #not used but needed for apt upgrades
 [database]
