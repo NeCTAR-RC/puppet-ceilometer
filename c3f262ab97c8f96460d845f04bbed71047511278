@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af78d9a_d4f8d24b",
+        "filename": "manifests/init.pp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2014-12-10T02:33:43Z",
+      "side": 1,
+      "message": "i think this would be better if it was\n\n agent_hostname\u003d$::hostname",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "c3f262ab97c8f96460d845f04bbed71047511278",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af78d9a_3495d6e4",
+        "filename": "templates/icehouse/ceilometer-node.conf.erb",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2014-12-10T02:33:43Z",
+      "side": 1,
+      "message": "this whole chunck could then be \n\n host\u003d\u003c%\u003d @agent_hostname %\u003e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "c3f262ab97c8f96460d845f04bbed71047511278",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
