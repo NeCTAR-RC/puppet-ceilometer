@@ -1,11 +1,8 @@
-# Configures the ceilometer-api service with UWSGI.
+# Configures the ceilometer-api service
 #
 class ceilometer::api($workers=1) inherits ceilometer {
 
-  include uwsgi
-
-  $worker_name = 'uwsgi-worker-ceilometer-api'
-  $wsgi_file = '/etc/ceilometer/app.wsgi'
+  $worker_name = '/usr/bin/ceilometer-api'
   $openstack_version = hiera('openstack_version')
 
   package {'ceilometer-api':
@@ -13,7 +10,7 @@ class ceilometer::api($workers=1) inherits ceilometer {
   }
 
   service {'ceilometer-api':
-    ensure    => 'stopped',
+    ensure    => 'running',
     subscribe => File['ceilometer-config'],
     require   => Package['ceilometer-api'],
   }
@@ -27,33 +24,8 @@ class ceilometer::api($workers=1) inherits ceilometer {
     source => "puppet:///modules/ceilometer/${openstack_version}/policy.json",
   }
 
-  file {$wsgi_file:
-    source => "puppet:///modules/ceilometer/${openstack_version}/app.wsgi",
-    owner  => 'ceilometer',
-    group  => 'ceilometer',
-  }
-
   nagios::nrpe::service {'service_ceilometer_api':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c ${workers}:${workers} -u ceilometer -a ${worker_name}";
-  }
-
-  uwsgi::manage_app {'ceilometer-api':
-    ensure => 'present',
-    uid    => 'ceilometer',
-    gid    => 'ceilometer',
-    config => {
-      http-socket     => ':8777',
-      master          => true,
-      plugin          => 'python',
-      enable-threads  => true,
-      need-app        => true,
-      buffer-size     => '16384',
-      timeout         => '300',
-      pecan           => $wsgi_file,
-      processes       => $workers,
-      procname        => $worker_name,
-      procname-master => 'uwsgi-master-ceilometer-api',
-    }
+    check_command => "/usr/lib/nagios/plugins/check_procs -c ${workers}:${workers} -u ceilometer -a /usr/bin/ceilometer-api",
   }
 
   firewall {'100 ceilometer':
@@ -62,13 +34,4 @@ class ceilometer::api($workers=1) inherits ceilometer {
     action => 'accept',
   }
 
-}
-class ceilometer::api::nagios-checks {
-  # These are checks that can be run by the nagios server.
-  nagios::command {
-    'check_ceilometer':
-      check_command => '/usr/lib/nagios/plugins/check_http -p \'$ARG1$\' -e 401 -H \'$HOSTADDRESS$\' -I \'$HOSTADDRESS$\'';
-    'check_ceilometer_ssl':
-      check_command => '/usr/lib/nagios/plugins/check_http --ssl -p \'$ARG1$\' -e 401 -H \'$HOSTADDRESS$\' -I \'$HOSTADDRESS$\'';
-  }
 }
