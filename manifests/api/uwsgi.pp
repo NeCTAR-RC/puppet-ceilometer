@@ -8,7 +8,7 @@ class ceilometer::api::uwsgi($workers=1) inherits ceilometer::api {
   $wsgi_file = '/etc/ceilometer/app.wsgi'
 
   Service['ceilometer-api'] {
-    ensure    => 'stopped',
+    ensure => 'stopped',
   }
 
   file {$wsgi_file:
