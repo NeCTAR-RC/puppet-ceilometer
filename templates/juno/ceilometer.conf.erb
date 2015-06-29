@@ -7,19 +7,21 @@ debug=true
 verbose=true
 <% end %>
 
-# RabbitMQ
+auth_strategy=keystone
+metering_secret=<%= metering_secret %>
+dispatcher=<%= dispatchers %>
+
+rabbit_durable_queues=True
+
+[oslo_messaging_rabbit]
 rabbit_hosts="<%= rabbit_hosts %>"
 rabbit_userid=<%= rabbit_user %>
 rabbit_password=<%= rabbit_password %>
 rabbit_virtual_host=<%= rabbit_virtual_host %>
 rabbit_ha_queues=True
-rabbit_durable_queues=True
+amqp_durable_queues=True
 rabbit_use_ssl=True
 kombu_ssl_version=TLSv1
-
-auth_strategy=keystone
-metering_secret=<%= metering_secret %>
-dispatcher=<%= dispatchers %>
 
 [database]
 connection=<%= database_connection %>
