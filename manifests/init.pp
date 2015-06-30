@@ -16,6 +16,7 @@ class ceilometer(
   $logrotation='weekly',
   $db_ttl=7776000,
   $agent_hostname=$::hostname,
+  $alarm_db_connection=undef,
 )
 {
 
