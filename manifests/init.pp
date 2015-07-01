@@ -36,11 +36,22 @@ class ceilometer(
     require => Package['ceilometer-common'],
   }
 
-  logrotate::rule { 'ceilometer':
+  $logrotate_rule = $openstack_version ? {
+    'icehouse' => 'ceilometer',
+    default    => 'ceilometer-common',
+  }
+
+  logrotate::rule { $logrotate_rule:
     ensure  => present,
     path    => '/var/log/ceilometer/*.log',
     options => ['rotate 4', $logrotation, 'missingok',
                 'compress', 'delaycompress', 'notifempty'],
+  }
+
+  if $logrotate_rule == 'ceilometer-common' {
+    logrotate::rule {'ceilometer':
+      ensure => absent,
+    }
   }
 
   file { '/var/log/ceilometer':
