@@ -32,6 +32,9 @@ class ceilometer(
   file {'ceilometer-config':
     ensure  => present,
     path    => '/etc/ceilometer/ceilometer.conf',
+    owner   => 'ceilometer',
+    group   => 'ceilometer',
+    mode    => '0644',
     content => template("ceilometer/${openstack_version}/ceilometer.conf.erb"),
     require => Package['ceilometer-common'],
   }
@@ -45,7 +48,9 @@ class ceilometer(
 
   file { '/var/log/ceilometer':
     ensure  => directory,
-    mode    => '0770',
+    owner   => 'ceilometer',
+    group   => 'ceilometer',
+    mode    => '0775',
     require => Package['ceilometer-common'],
   }
 }

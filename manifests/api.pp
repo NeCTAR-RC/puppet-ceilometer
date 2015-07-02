@@ -21,6 +21,9 @@ class ceilometer::api($workers=1) inherits ceilometer {
   }
 
   file {'/etc/ceilometer/policy.json':
+    owner  => 'ceilometer',
+    group  => 'ceilometer',
+    mode   => '0644',
     source => "puppet:///modules/ceilometer/${openstack_version}/policy.json",
   }
 
