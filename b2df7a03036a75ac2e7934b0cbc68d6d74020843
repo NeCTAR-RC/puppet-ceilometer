@@ -1,0 +1,8 @@
+Verified+1: Jenkins <no-reply+jenkins@nectar.org.au>
+Code-Review+1: Sam Morrison <sam.morrison@unimelb.edu.au>
+Code-Review+1: Linh Vu <vul@unimelb.edu.au>
+Submitted-by: Jake Yip <jake.yip@unimelb.edu.au>
+Submitted-at: Thu, 02 Jul 2015 11:21:52 +1000
+Reviewed-on: https://review.rc.nectar.org.au/2756
+Project: NeCTAR-RC/puppet-ceilometer
+Branch: refs/heads/master
