@@ -43,6 +43,7 @@ class ceilometer::develop (
     ensure => directory,
     owner  => ceilometer,
     group  => ceilometer,
+    mode   => '0755',
   }
 
   user {'ceilometer':
@@ -99,6 +100,9 @@ class ceilometer::develop::api inherits ceilometer::api {
 
   file {'/etc/init/ceilometer-api.conf':
     source => 'puppet:///modules/ceilometer/api-init.conf',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
   }
 
 
@@ -135,6 +139,9 @@ class ceilometer::develop::collector::cell (
     path    => '/etc/ceilometer/ceilometer-cell.conf',
     content => template("ceilometer/${ceilometer::openstack_version}/ceilometer-cell.conf.erb"),
     require => Package['ceilometer-common'],
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
   }
 
   service {'ceilometer-collector-cell':
