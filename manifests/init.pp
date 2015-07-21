@@ -13,6 +13,10 @@ class ceilometer(
   $forward_metering_data='False',
   $forwarder_transport_url=false,
   $metering_secret,
+  $meter_source_interval=600,
+  $cpu_source_interval=600,
+  $disk_source_interval=600,
+  $network_source_interval=600,
   $database_connection='sqlite:////var/lib/ceilometer/ceilometer.sqlite',
   $logrotation='weekly',
   $db_ttl=7776000,
@@ -37,6 +41,16 @@ class ceilometer(
     group   => 'ceilometer',
     mode    => '0644',
     content => template("ceilometer/${openstack_version}/ceilometer.conf.erb"),
+    require => Package['ceilometer-common'],
+  }
+
+  file {'ceilometer-pipeline.yaml':
+    ensure  => present,
+    path    => '/etc/ceilometer/pipeline.yaml',
+    owner   => 'ceilometer',
+    group   => 'ceilometer',
+    mode    => '0644',
+    content => template("ceilometer/${openstack_version}/pipeline.conf.erb"),
     require => Package['ceilometer-common'],
   }
 
