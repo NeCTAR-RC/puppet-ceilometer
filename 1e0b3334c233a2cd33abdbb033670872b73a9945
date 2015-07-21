@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a245df4_9fb49ef3",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000105
+      },
+      "writtenOn": "2015-07-21T07:37:37Z",
+      "side": 1,
+      "message": "agree that this is not very descriptive, but I wanted to stick with what the config file calls it.\nWould maybe something like pipeline_meter_source_interval would be better, and likewise prefixing pipeline_ to the other 3 configurables I\u0027ve added?",
+      "parentUuid": "9a245df4_7f460a25",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "1e0b3334c233a2cd33abdbb033670872b73a9945",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a245df4_df4a9626",
         "filename": "manifests/init.pp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-21T04:38:34Z",
       "side": 1,
       "message": "I\u0027m wondering if a sensible default is 60 for this",
+      "range": {
+        "startLine": 17,
+        "startChar": 23,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "1e0b3334c233a2cd33abdbb033670872b73a9945",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_3fbf72d2",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000105
+      },
+      "writtenOn": "2015-07-21T07:37:37Z",
+      "side": 1,
+      "message": "I suggest we stick with the upstream default here and adjust with hiera, until we\u0027re confident that 60s works on our cloud in practice, then set the default here.\n\nNot a big deal if you want me to change now though.",
+      "parentUuid": "9a245df4_df4a9626",
       "range": {
         "startLine": 17,
         "startChar": 23,
