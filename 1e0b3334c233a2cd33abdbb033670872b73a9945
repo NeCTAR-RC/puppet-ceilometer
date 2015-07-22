@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9a245df4_dfaf362a",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000105
+      },
+      "writtenOn": "2015-07-22T07:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a245df4_9fb49ef3",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "1e0b3334c233a2cd33abdbb033670872b73a9945",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a245df4_df4a9626",
         "filename": "manifests/init.pp",
         "patchSetId": 1
