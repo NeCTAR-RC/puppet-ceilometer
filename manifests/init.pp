@@ -50,7 +50,7 @@ class ceilometer(
     owner   => 'ceilometer',
     group   => 'ceilometer',
     mode    => '0644',
-    content => template("ceilometer/${openstack_version}/pipeline.conf.erb"),
+    content => template("ceilometer/${openstack_version}/pipeline.yaml.erb"),
     require => Package['ceilometer-common'],
   }
 
