@@ -6,7 +6,7 @@ class ceilometer::agent-compute inherits ceilometer::node {
 
   service {'ceilometer-agent-compute':
     ensure    => running,
-    subscribe => File['ceilometer-config'],
+    subscribe => [File['ceilometer-config'], File['ceilometer-pipeline.yaml']],
     require   => Package['ceilometer-agent-compute'],
   }
 
