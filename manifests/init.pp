@@ -75,8 +75,8 @@ class ceilometer(
   file { '/var/log/ceilometer':
     ensure  => directory,
     owner   => 'ceilometer',
-    group   => 'ceilometer',
-    mode    => '0775',
+    group   => 'adm',
+    mode    => '0750',
     require => Package['ceilometer-common'],
   }
 }
