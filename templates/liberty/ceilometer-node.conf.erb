@@ -1,0 +1,36 @@
+[DEFAULT]
+
+# Logging
+log_dir=/var/log/ceilometer
+<% if @logdebug %>
+debug=true
+verbose=true
+<% end %>
+
+metering_secret=<%= metering_secret %>
+host=<%= agent_hostname %>
+
+rabbit_durable_queues=True
+
+[oslo_messaging_rabbit]
+rabbit_hosts="<%= rabbit_hosts %>"
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_password %>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
+rabbit_ha_queues=True
+amqp_durable_queues=True
+rabbit_use_ssl=True
+kombu_ssl_version=TLSv1
+
+#not used but needed for apt upgrades
+[database]
+connection=<%= database_connection %>
+
+[service_credentials]
+os_username=<%= keystone_user %>
+os_password=<%= keystone_password %>
+os_tenant_name=<%= keystone_service_tenant %>
+os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
+<% if keystone_region %>
+os_region_name=<%= keystone_region %>
+<% end %>
