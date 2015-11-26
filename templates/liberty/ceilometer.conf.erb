@@ -10,9 +10,10 @@ verbose=true
 auth_strategy=keystone
 dispatcher=<%= dispatchers %>
 
-collector_workers=<%= collector_workers %>
-
 rabbit_durable_queues=True
+
+[collector]
+workers=<%= collector_workers %>
 
 [publisher]
 telemetry_secret=<%= metering_secret %>
@@ -32,7 +33,7 @@ connection=<%= database_connection %>
 <% if alarm_db_connection -%>
 alarm_connection=<%= alarm_db_connection %>
 <% end -%>
-time_to_live = <%= db_ttl %>
+metering_time_to_live = <%= db_ttl %>
 
 [service_credentials]
 # Service credentials
