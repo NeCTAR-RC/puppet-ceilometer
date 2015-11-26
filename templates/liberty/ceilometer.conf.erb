@@ -8,12 +8,14 @@ verbose=true
 <% end -%>
 
 auth_strategy=keystone
-metering_secret=<%= metering_secret %>
 dispatcher=<%= dispatchers %>
 
 collector_workers=<%= collector_workers %>
 
 rabbit_durable_queues=True
+
+[publisher]
+telemetry_secret=<%= metering_secret %>
 
 [oslo_messaging_rabbit]
 rabbit_hosts="<%= rabbit_hosts %>"

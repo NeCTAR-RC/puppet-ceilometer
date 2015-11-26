@@ -7,10 +7,12 @@ debug=true
 verbose=true
 <% end %>
 
-metering_secret=<%= metering_secret %>
 host=<%= agent_hostname %>
 
 rabbit_durable_queues=True
+
+[publisher]
+telemetry_secret=<%= metering_secret %>
 
 [oslo_messaging_rabbit]
 rabbit_hosts="<%= rabbit_hosts %>"
