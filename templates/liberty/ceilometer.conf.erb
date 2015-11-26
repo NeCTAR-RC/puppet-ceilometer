@@ -10,7 +10,8 @@ verbose=true
 auth_strategy=keystone
 dispatcher=<%= dispatchers %>
 
-rabbit_durable_queues=True
+[notification]
+disable_non_metric_meters=true
 
 [collector]
 workers=<%= collector_workers %>

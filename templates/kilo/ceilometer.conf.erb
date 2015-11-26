@@ -12,7 +12,8 @@ dispatcher=<%= dispatchers %>
 
 collector_workers=<%= collector_workers %>
 
-rabbit_durable_queues=True
+[notification]
+disable_non_metric_meters=true
 
 [publisher]
 telemetry_secret=<%= metering_secret %>
