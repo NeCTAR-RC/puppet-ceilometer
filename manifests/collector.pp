@@ -12,7 +12,16 @@ class ceilometer::collector inherits ceilometer {
     require   => Package['ceilometer-collector'],
   }
 
-  $check_count = $ceilometer::collector_workers + 1
+  if $::ceilometer::openstack_version == 'juno' {
+    $check_count = $ceilometer::collector_workers + 1
+  } else {
+    if $::ceilometer::collector_workers == 1 {
+      $check_count = $ceilometer::collector_workers
+    } else {
+      $check_count = $ceilometer::collector_workers + 1
+    }
+    $procs = 1
+  }
 
   nagios::nrpe::service {'service_ceilometer_collector':
     check_command => "/usr/lib/nagios/plugins/check_procs -c ${check_count}:${check_count} -u ceilometer -a /usr/bin/ceilometer-collector";

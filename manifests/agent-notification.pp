@@ -10,8 +10,14 @@ class ceilometer::agent-notification inherits ceilometer {
     require   => Package['ceilometer-agent-notification'],
   }
 
+  if $::ceilometer::openstack_version == 'juno' {
+    $procs = 2
+  } else {
+    $procs = 1
+  }
+
   nagios::nrpe::service {'service_ceilometer_agent_notification':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c 2:2 -u ceilometer -a /usr/bin/ceilometer-agent-notification";
+    check_command => "/usr/lib/nagios/plugins/check_procs -c ${procs}:${procs} -u ceilometer -a /usr/bin/ceilometer-agent-notification";
   }
 
 }
