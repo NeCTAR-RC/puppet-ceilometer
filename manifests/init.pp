@@ -22,6 +22,7 @@ class ceilometer(
   $db_ttl=7776000,
   $agent_hostname=$::hostname,
   $alarm_db_connection=undef,
+  $gnocchi_url=undef,
 )
 {
 
@@ -78,6 +79,18 @@ class ceilometer(
     group   => 'adm',
     mode    => '0750',
     require => Package['ceilometer-common'],
+  }
+
+  if $gnocchi_url {
+
+    file {'/etc/ceilometer/gnocchi_resources.yaml':
+      ensure  => present,
+      owner   => 'ceilometer',
+      group   => 'ceilometer',
+      mode    => '0644',
+      source  => "puppet:///modules/ceilometer/${openstack_version}/gnocchi_resources.yaml",
+      require => Package['ceilometer-common'],
+    }
   }
 }
 
