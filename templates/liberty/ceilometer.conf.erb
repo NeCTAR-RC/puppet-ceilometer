@@ -8,7 +8,17 @@ verbose=true
 <% end -%>
 
 auth_strategy=keystone
-dispatcher=<%= dispatchers %>
+<% dispatchers.split(',').each do |dispatcher| -%>
+dispatcher=<%= dispatcher %>
+<% end -%>
+
+<% if gnocchi_url -%>
+[dispatcher_gnocchi]
+filter_project = service
+filter_service_activity = True
+archive_policy = low
+url = <%= gnocchi_url %>
+<% end -%>
 
 [notification]
 disable_non_metric_meters=true
