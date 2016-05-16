@@ -27,11 +27,11 @@ class ceilometer::api($workers=1) inherits ceilometer {
     source => "puppet:///modules/ceilometer/${openstack_version}/policy.json",
   }
 
-  file {'/etc/ceilometer/api-paste.ini':
+  file {'/etc/ceilometer/api_paste.ini':
     owner  => 'ceilometer',
     group  => 'ceilometer',
     mode   => '0644',
-    source => "puppet:///modules/ceilometer/${openstack_version}/api-paste.ini",
+    source => "puppet:///modules/ceilometer/${openstack_version}/api_paste.ini",
   }
 
   nagios::nrpe::service {'service_ceilometer_api':
