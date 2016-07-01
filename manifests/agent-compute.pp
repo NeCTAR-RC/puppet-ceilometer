@@ -10,8 +10,14 @@ class ceilometer::agent-compute inherits ceilometer::node {
     require   => Package['ceilometer-agent-compute'],
   }
 
+  if $::ceilometer::openstack_version == 'kilo' {
+    $process_name = 'ceilometer-agent-compute'
+  } else {
+    $process_name = 'ceilometer-polling'
+  }
+
   nagios::nrpe::service {'service_ceilometer_agent_compute':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a /usr/bin/ceilometer-agent-compute",
+    check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a bin/${process_name}",
   }
 
 }
