@@ -11,7 +11,7 @@ class ceilometer::agent-central inherits ceilometer {
   }
 
   nagios::nrpe::service {'service_ceilometer_agent_central':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a /usr/bin/ceilometer-agent-central";
+    check_command => '/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a bin/ceilometer-polling';
   }
 
 }
