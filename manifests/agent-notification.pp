@@ -17,7 +17,7 @@ class ceilometer::agent-notification inherits ceilometer {
   }
 
   nagios::nrpe::service {'service_ceilometer_agent_notification':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c ${procs}:${procs} -u ceilometer -a /usr/bin/ceilometer-agent-notification";
+    check_command => "/usr/lib/nagios/plugins/check_procs -c ${procs}:${procs} -u ceilometer -a bin/ceilometer-agent-notification";
   }
 
 }
