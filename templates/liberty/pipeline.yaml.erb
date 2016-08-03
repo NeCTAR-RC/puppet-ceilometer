@@ -40,6 +40,9 @@ sinks:
       transformers:
       publishers:
           - notifier://
+<% extra_publishers.each do |pub| -%>
+          - <%= pub %>
+<% end -%>
     - name: cpu_sink
       transformers:
           - name: "rate_of_change"
@@ -51,6 +54,9 @@ sinks:
                     scale: "100.0 / (10**9 * (resource_metadata.cpu_number or 1))"
       publishers:
           - notifier://
+<% extra_publishers.each do |pub| -%>
+          - <%= pub %>
+<% end -%>
     - name: cpu_delta_sink
       transformers:
           - name: "delta"
@@ -60,6 +66,9 @@ sinks:
                 growth_only: True
       publishers:
           - notifier://
+<% extra_publishers.each do |pub| -%>
+          - <%= pub %>
+<% end -%>
     - name: disk_sink
       transformers:
           - name: "rate_of_change"
@@ -75,6 +84,9 @@ sinks:
                     type: "gauge"
       publishers:
           - notifier://
+<% extra_publishers.each do |pub| -%>
+          - <%= pub %>
+<% end -%>
     - name: network_sink
       transformers:
           - name: "rate_of_change"
@@ -90,3 +102,6 @@ sinks:
                     type: "gauge"
       publishers:
           - notifier://
+<% extra_publishers.each do |pub| -%>
+          - <%= pub %>
+<% end -%>
