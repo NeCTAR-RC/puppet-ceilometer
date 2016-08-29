@@ -32,7 +32,9 @@ class ceilometer(
   $keystone_protocol = hiera('keystone::protocol')
   $keystone_service_tenant = hiera('keystone::service_tenant')
 
-  package {['ceilometer-common', 'python-pymongo']:
+  ensure_packages('python-pymongo')
+
+  package {'ceilometer-common':
     ensure => installed
   }
 
