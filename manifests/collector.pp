@@ -24,7 +24,7 @@ class ceilometer::collector inherits ceilometer {
   }
 
   nagios::nrpe::service {'service_ceilometer_collector':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c ${check_count}:${check_count} -u ceilometer -a /usr/bin/ceilometer-collector";
+    check_command => "/usr/lib/nagios/plugins/check_procs -c ${check_count}:${check_count} -u ceilometer -a bin/ceilometer-collector";
   }
 
 }

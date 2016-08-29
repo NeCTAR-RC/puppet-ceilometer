@@ -2,7 +2,7 @@
 #
 class ceilometer::api($workers=1) inherits ceilometer {
 
-  $worker_name = '/usr/bin/ceilometer-api'
+  $worker_name = 'bin/ceilometer-api'
   $openstack_version = hiera('openstack_version')
 
   package {'ceilometer-api':
