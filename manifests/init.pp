@@ -8,6 +8,8 @@ class ceilometer(
   $rabbit_password,
   $rabbit_virtual_host,
   $dispatchers='rpc',
+  $event_dispatchers=['database'],
+  $meter_dispatchers=['database'],
   $collector_workers=1,
   $disable_local_storage='False',
   $forward_metering_data='False',

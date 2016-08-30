@@ -1,0 +1,76 @@
+[DEFAULT]
+
+# Logging
+log_dir=/var/log/ceilometer
+<% if @logdebug -%>
+debug=true
+verbose=true
+<% end -%>
+
+auth_strategy=keystone
+
+<% event_dispatchers.each do |value| -%>
+event_dispatchers = <%= value %>
+<% end -%>
+
+<% meter_dispatchers.each do |value| -%>
+meter_dispatchers = <%= value %>
+<% end -%>
+
+<% if gnocchi_url -%>
+[dispatcher_gnocchi]
+filter_project = <%= keystone_service_tenant %>
+filter_service_activity = True
+archive_policy = low
+url = <%= gnocchi_url %>
+<% end -%>
+
+[notification]
+disable_non_metric_meters=true
+
+[collector]
+workers=<%= collector_workers %>
+
+[publisher]
+telemetry_secret=<%= metering_secret %>
+
+[oslo_messaging_rabbit]
+rabbit_hosts="<%= rabbit_hosts %>"
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_password %>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
+rabbit_ha_queues=True
+amqp_durable_queues=True
+rabbit_use_ssl=True
+kombu_ssl_version=TLSv1
+
+[database]
+connection=<%= database_connection %>
+<% if alarm_db_connection -%>
+alarm_connection=<%= alarm_db_connection %>
+<% end -%>
+metering_time_to_live = <%= db_ttl %>
+
+[service_credentials]
+# Service credentials
+os_username=<%= keystone_user %>
+os_password=<%= keystone_password %>
+os_tenant_name=<%= keystone_service_tenant %>
+os_auth_url=<%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0/
+<% if keystone_region -%>
+os_region_name=<%= keystone_region %>
+<% end -%>
+
+<% if forwarder_transport_url -%>
+[dispatcher_rpc]
+transport_url=<%= forwarder_transport_url %>
+<% end -%>
+
+[keystone_authtoken]
+auth_host = <%= keystone_host %>
+auth_port = 35357
+auth_protocol = <%= keystone_protocol %>
+admin_tenant_name = <%= keystone_service_tenant %>
+admin_user = <%= keystone_user %>
+admin_password = <%= keystone_password %>
+signing_dir = /var/lib/ceilometer/keystone-signing
