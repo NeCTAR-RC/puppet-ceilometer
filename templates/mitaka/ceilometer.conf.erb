@@ -30,6 +30,9 @@ disable_non_metric_meters=true
 store_events = true
 batch_size = 10
 batch_timeout = 5
+<% notification_messaging_urls.each do |value| -%>
+messaging_urls = <%= value %>
+<% end -%>
 
 [collector]
 workers=<%= collector_workers %>

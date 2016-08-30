@@ -10,6 +10,7 @@ class ceilometer(
   $dispatchers='rpc',
   $event_dispatchers=['database'],
   $meter_dispatchers=['database'],
+  $notification_messaging_urls=[],
   $collector_workers=1,
   $disable_local_storage='False',
   $forward_metering_data='False',
