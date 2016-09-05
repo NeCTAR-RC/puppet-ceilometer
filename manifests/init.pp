@@ -61,6 +61,22 @@ class ceilometer(
     require => Package['ceilometer-common'],
   }
 
+  file {'/etc/ceilometer/event_definitions.yaml':
+    owner   => 'ceilometer',
+    group   => 'ceilometer',
+    mode    => '0644',
+    source  => "puppet:///modules/ceilometer/${openstack_version}/event_definitions.yaml",
+    require => Package['ceilometer-common'],
+  }
+
+  file {'/etc/ceilometer/event_pipeline.yaml':
+    owner   => 'ceilometer',
+    group   => 'ceilometer',
+    mode    => '0644',
+    source  => "puppet:///modules/ceilometer/${openstack_version}/event_pipeline.yaml",
+    require => Package['ceilometer-common'],
+  }
+
   if $openstack_version == 'liberty' {
     logrotate::rule { 'ceilometer-common':
       ensure  => present,
