@@ -90,6 +90,11 @@ class ceilometer(
     }
   }
 
+  logrotate::rule { 'ceilometer-common':
+    path    => '/var/log/ceilometer/*.log',
+    postrotate => 'systemctl restart --all ceilometer-*.service',
+  }
+
   file { '/var/log/ceilometer':
     ensure  => directory,
     owner   => 'ceilometer',
