@@ -94,6 +94,17 @@ class ceilometer(
     }
   }
 
+  if $openstack_version == 'mitaka' and $::lsbdistcodename == 'xenial' {
+    # mitaka has the logrotate rule but does not restart service
+    logrotate::rule { 'ceilometer-common':
+      ensure     => present,
+      path       => '/var/log/ceilometer/*.log',
+      options    => ['daily', 'missingok', 'compress',
+                  'delaycompress', 'notifempty', 'copytruncate'],
+      postrotate => 'systemctl restart --all ceilometer-*.service',
+    }
+  }
+
   file { '/var/log/ceilometer':
     ensure  => directory,
     owner   => 'ceilometer',
