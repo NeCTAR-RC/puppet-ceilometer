@@ -28,7 +28,7 @@ url = <%= gnocchi_url %>
 [notification]
 disable_non_metric_meters=true
 store_events = true
-batch_size = 10
+batch_size = <%= batch_size %>
 batch_timeout = 5
 <% notification_messaging_urls.each do |value| -%>
 messaging_urls = <%= value %>
@@ -36,7 +36,7 @@ messaging_urls = <%= value %>
 
 [collector]
 workers=<%= collector_workers %>
-batch_size = 10
+batch_size = <%= batch_size %>
 batch_timeout = 5
 
 [publisher]

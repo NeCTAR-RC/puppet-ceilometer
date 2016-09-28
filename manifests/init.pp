@@ -27,6 +27,7 @@ class ceilometer(
   $alarm_db_connection=undef,
   $gnocchi_url=undef,
   $extra_publishers=[],
+  $batch_size=50,
 )
 {
 
