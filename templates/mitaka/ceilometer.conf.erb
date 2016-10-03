@@ -21,7 +21,7 @@ meter_dispatchers = <%= value %>
 [dispatcher_gnocchi]
 filter_project = <%= keystone_service_tenant %>
 filter_service_activity = True
-archive_policy = low
+archive_policy = ceilometer
 url = <%= gnocchi_url %>
 <% end -%>
 
