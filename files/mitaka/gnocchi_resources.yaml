@@ -150,7 +150,7 @@ resources:
       - 'stack.resume'
       - 'stack.suspend'
 
-  - resource_type: swift_account
+  - resource_type: project
     metrics:
       - 'storage.objects.incoming.bytes'
       - 'storage.objects.outgoing.bytes'
