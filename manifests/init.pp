@@ -28,6 +28,7 @@ class ceilometer(
   $gnocchi_url=undef,
   $extra_publishers=[],
   $batch_size=50,
+  $rabbit_prefetch_count=100,
 )
 {
 
