@@ -41,13 +41,9 @@ kombu_ssl_version=TLSv1
 
 [database]
 connection=<%= database_connection %>
-<% if alarm_db_connection -%>
-alarm_connection=<%= alarm_db_connection %>
-<% end -%>
 metering_time_to_live = <%= db_ttl %>
 
 [service_credentials]
-# Service credentials
 os_username=<%= keystone_user %>
 os_password=<%= keystone_password %>
 os_tenant_name=<%= keystone_service_tenant %>

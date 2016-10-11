@@ -24,7 +24,6 @@ class ceilometer(
   $logrotation='weekly',
   $db_ttl=7776000,
   $agent_hostname=$::hostname,
-  $alarm_db_connection=undef,
   $gnocchi_url=undef,
   $extra_publishers=[],
   $batch_size=50,
