@@ -79,3 +79,8 @@ admin_tenant_name = <%= keystone_service_tenant %>
 admin_user = <%= keystone_user %>
 admin_password = <%= keystone_password %>
 signing_dir = /var/lib/ceilometer/keystone-signing
+
+<% if @cache_backend -%>
+[cache]
+backend = <%= @cache_backend %>
+<% end -%>

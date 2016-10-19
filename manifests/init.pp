@@ -29,6 +29,7 @@ class ceilometer(
   $extra_publishers=[],
   $batch_size=50,
   $rabbit_prefetch_count=100,
+  $cache_backend=undef,
 )
 {
 
