@@ -82,5 +82,7 @@ signing_dir = /var/lib/ceilometer/keystone-signing
 
 <% if @cache_backend -%>
 [cache]
+enabled = True
 backend = <%= @cache_backend %>
+expiration_time = <%= @cache_expiration_time %>
 <% end -%>
