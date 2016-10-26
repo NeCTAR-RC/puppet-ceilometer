@@ -30,6 +30,7 @@ class ceilometer(
   $batch_size=50,
   $rabbit_prefetch_count=100,
   $cache_backend=undef,
+  $cache_expiration_time=3600,
 )
 {
 
