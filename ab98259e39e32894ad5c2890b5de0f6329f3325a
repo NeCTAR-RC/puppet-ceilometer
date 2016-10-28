@@ -22,6 +22,30 @@
       "revId": "ab98259e39e32894ad5c2890b5de0f6329f3325a",
       "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adec928_ab03f50d",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-28T01:38:36Z",
+      "side": 1,
+      "message": "This is the default for the config, which I\u0027m keeping. We can put a default that suits our setup, but this is just better for modules which others may use?",
+      "parentUuid": "7adec928_6b748dcf",
+      "range": {
+        "startLine": 33,
+        "startChar": 25,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "ab98259e39e32894ad5c2890b5de0f6329f3325a",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
     }
   ]
 }
