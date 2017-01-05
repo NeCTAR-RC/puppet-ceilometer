@@ -1,23 +1,5 @@
 class ceilometer::agent-compute inherits ceilometer::node {
+  include ::ceilometer::agent_compute
 
-  package {'ceilometer-agent-compute':
-    ensure => installed,
-  }
-
-  service {'ceilometer-agent-compute':
-    ensure    => running,
-    subscribe => [File['ceilometer-config'], File['ceilometer-pipeline.yaml']],
-    require   => Package['ceilometer-agent-compute'],
-  }
-
-  if $::ceilometer::openstack_version == 'kilo' {
-    $process_name = 'ceilometer-agent-compute'
-  } else {
-    $process_name = 'ceilometer-polling'
-  }
-
-  nagios::nrpe::service {'service_ceilometer_agent_compute':
-    check_command => "/usr/lib/nagios/plugins/check_procs -c 1:1 -u ceilometer -a bin/${process_name}",
-  }
-
+  notify {'class ceilometer::agent-compute is deprecated. Please use ceilometer::agent_compute': }
 }
