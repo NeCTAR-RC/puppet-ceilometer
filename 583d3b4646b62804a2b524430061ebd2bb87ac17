@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5adbc538_c0acc038",
+        "filename": "manifests/init.pp",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000105
+      },
+      "writtenOn": "2017-01-12T23:20:24Z",
+      "side": 1,
+      "message": "does this * get expanded by root\u0027s shell?",
+      "revId": "583d3b4646b62804a2b524430061ebd2bb87ac17",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
