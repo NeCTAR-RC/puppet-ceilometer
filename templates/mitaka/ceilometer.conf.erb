@@ -6,6 +6,9 @@ log_dir=/var/log/ceilometer
 debug=true
 verbose=true
 <% end -%>
+use_stderr=false
+use_syslog=true
+syslog_log_facility=LOG_USER
 
 auth_strategy=keystone
 
