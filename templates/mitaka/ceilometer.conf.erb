@@ -71,7 +71,7 @@ os_region_name=<%= @keystone_region %>
 
 <% if @forwarder_transport_url -%>
 [dispatcher_rpc]
-transport_url=<%= forwarder_transport_url %>
+transport_url=<%= @forwarder_transport_url %>
 <% end -%>
 
 [keystone_authtoken]
