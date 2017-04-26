@@ -1,20 +1,20 @@
 ---
 sources:
     - name: meter_source
-      interval: <%= default_source_interval %>
+      interval: <%= @default_source_interval %>
       meters:
           - "*"
       sinks:
           - meter_sink
     - name: cpu_source
-      interval: <%= cpu_source_interval %>
+      interval: <%= @cpu_source_interval %>
       meters:
           - "cpu"
       sinks:
           - cpu_sink
           - cpu_delta_sink
     - name: disk_source
-      interval: <%= disk_source_interval %>
+      interval: <%= @disk_source_interval %>
       meters:
           - "disk.read.bytes"
           - "disk.read.requests"
@@ -27,7 +27,7 @@ sources:
       sinks:
           - disk_sink
     - name: network_source
-      interval: <%= network_source_interval %>
+      interval: <%= @network_source_interval %>
       meters:
           - "network.incoming.bytes"
           - "network.incoming.packets"
@@ -40,7 +40,7 @@ sinks:
       transformers:
       publishers:
           - notifier://
-<% extra_publishers.each do |pub| -%>
+<% @extra_publishers.each do |pub| -%>
           - <%= pub %>
 <% end -%>
     - name: cpu_sink
@@ -54,7 +54,7 @@ sinks:
                     scale: "100.0 / (10**9 * (resource_metadata.cpu_number or 1))"
       publishers:
           - notifier://
-<% extra_publishers.each do |pub| -%>
+<% @extra_publishers.each do |pub| -%>
           - <%= pub %>
 <% end -%>
     - name: cpu_delta_sink
@@ -66,7 +66,7 @@ sinks:
                 growth_only: True
       publishers:
           - notifier://
-<% extra_publishers.each do |pub| -%>
+<% @extra_publishers.each do |pub| -%>
           - <%= pub %>
 <% end -%>
     - name: disk_sink
@@ -84,7 +84,7 @@ sinks:
                     type: "gauge"
       publishers:
           - notifier://
-<% extra_publishers.each do |pub| -%>
+<% @extra_publishers.each do |pub| -%>
           - <%= pub %>
 <% end -%>
     - name: network_sink
@@ -102,6 +102,6 @@ sinks:
                     type: "gauge"
       publishers:
           - notifier://
-<% extra_publishers.each do |pub| -%>
+<% @extra_publishers.each do |pub| -%>
           - <%= pub %>
 <% end -%>

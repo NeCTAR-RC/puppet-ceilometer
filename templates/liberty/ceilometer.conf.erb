@@ -8,7 +8,7 @@ verbose=true
 <% end -%>
 
 auth_strategy=keystone
-<% dispatchers.split(',').each do |dispatcher| -%>
+<% @dispatchers.split(',').each do |dispatcher| -%>
 dispatcher=<%= dispatcher %>
 <% end -%>
 
