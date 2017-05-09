@@ -40,6 +40,14 @@
 #    * libvirt_metadata: get instances from libvirt metadata
 #      but without instance metadata (recommended for Gnocchi backend).
 #
+# [*manage_polling*]
+#   (Optional) Whether to manage polling.yaml
+#   Defaults to false
+#
+# [*polling_interval*]
+#   (Optional) Number of seconds between polling cycle
+#   Defaults to 600 seconds, used only if manage_polling is true.
+#
 class ceilometer::agent::polling (
   $manage_service            = true,
   $enabled                   = true,
@@ -50,6 +58,8 @@ class ceilometer::agent::polling (
   $coordination_url          = undef,
   $instance_discovery_method = $::os_service_default,
   $manage_user_groups        = false,
+  $manage_polling            = false,
+  $polling_interval          = 600,
 ) inherits ceilometer {
 
   include ::ceilometer::deps
@@ -126,6 +136,15 @@ class ceilometer::agent::polling (
   if $coordination_url {
     ceilometer_config {
       'coordination/backend_url': value => $coordination_url
+    }
+  }
+
+  if $manage_polling {
+    file { 'polling':
+      ensure                  => present,
+      path                    => $::ceilometer::params::polling,
+      content                 => template('ceilometer/polling.yaml.erb'),
+      selinux_ignore_defaults => true,
     }
   }
 }
