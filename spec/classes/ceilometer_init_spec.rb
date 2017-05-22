@@ -18,10 +18,11 @@ describe 'ceilometer' do
 
   let :rabbit_params do
     {
-      :rabbit_host        => '127.0.0.1',
-      :rabbit_port        => 5672,
-      :rabbit_userid      => 'guest',
-      :rabbit_password    => '',
+      :rabbit_host               => '127.0.0.1',
+      :rabbit_port               => 5672,
+      :rabbit_userid             => 'guest',
+      :rabbit_password           => '',
+      :rabbit_qos_prefetch_count => 10,
     }
   end
 
@@ -184,6 +185,7 @@ describe 'ceilometer' do
 
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_host').with_value( params[:rabbit_host] ) }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_port').with_value( params[:rabbit_port] ) }
+    it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_qos_prefetch_count').with_value( params[:rabbit_qos_prefetch_count] ) }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_hosts').with_value('<SERVICE DEFAULT>') }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_ha_queues').with_value('<SERVICE DEFAULT>') }
 
@@ -202,6 +204,7 @@ describe 'ceilometer' do
 
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_host').with_value('<SERVICE DEFAULT>') }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_port').with_value('<SERVICE DEFAULT>') }
+    it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_qos_prefetch_count').with_value( params[:rabbit_qos_prefetch_count] ) }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_hosts').with_value( params[:rabbit_hosts].join(',') ) }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_ha_queues').with_value('<SERVICE DEFAULT>') }
 
@@ -227,6 +230,7 @@ describe 'ceilometer' do
 
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_host').with_value('<SERVICE DEFAULT>') }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_port').with_value('<SERVICE DEFAULT>') }
+    it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_qos_prefetch_count').with_value( params[:rabbit_qos_prefetch_count] ) }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_hosts').with_value( params[:rabbit_hosts].join(',') ) }
     it { is_expected.to contain_ceilometer_config('oslo_messaging_rabbit/rabbit_ha_queues').with_value(true) }
 
