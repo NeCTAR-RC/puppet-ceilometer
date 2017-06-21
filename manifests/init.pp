@@ -331,11 +331,13 @@ deprecated. Please use ceilometer::default_transport_url instead.")
   }
 
   group { 'ceilometer':
+    ensure  => present,
     name    => 'ceilometer',
     require => Anchor['ceilometer::install::end'],
   }
 
   user { 'ceilometer':
+    ensure  => present,
     name    => 'ceilometer',
     gid     => 'ceilometer',
     system  => true,
