@@ -1,5 +1,5 @@
 [gerrit]
-host=review.openstack.org
+host=review.rc.nectar.org.au
 port=29418
-project=openstack/puppet-ceilometer.git
-defaultbranch=stable/ocata
+project=NeCTAR-RC/puppet-ceilometer.git
+defaultbranch=nectar/ocata
