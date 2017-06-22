@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae5cdf2_9db056f6",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2017-06-22T06:45:48Z",
+      "side": 1,
+      "message": "isn\u0027t this an auto depend in puppet?",
+      "range": {
+        "startLine": 344,
+        "startChar": 52,
+        "endLine": 344,
+        "endChar": 72
+      },
+      "revId": "5bc82698c298025d72f405754b6976a454dda055",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
