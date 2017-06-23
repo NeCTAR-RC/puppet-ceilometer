@@ -49,6 +49,7 @@ class ceilometer::agent::polling (
   $ipmi_namespace            = true,
   $coordination_url          = undef,
   $instance_discovery_method = $::os_service_default,
+  $manage_user_groups        = false,
 ) inherits ceilometer {
 
   include ::ceilometer::deps
@@ -61,7 +62,7 @@ class ceilometer::agent::polling (
   }
 
   if $compute_namespace {
-    if $::ceilometer::params::libvirt_group {
+    if $::ceilometer::params::libvirt_group and $manage_user_groups {
       User['ceilometer'] {
         groups => ['nova', $::ceilometer::params::libvirt_group]
       }
