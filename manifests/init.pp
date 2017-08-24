@@ -417,7 +417,11 @@ deprecated. Please use ceilometer::default_transport_url instead.")
     control_exchange     => $control_exchange,
   }
 
-  oslo::cache { 'ceilometer_config':
-    memcache_servers => $memcached_servers,
+  if !is_service_default($memcached_servers) {
+    oslo::cache { 'ceilometer_config':
+      enabled          => true,
+      backend          => 'oslo_cache.memcache_pool',
+      memcache_servers => $memcached_servers,
+    }
   }
 }
