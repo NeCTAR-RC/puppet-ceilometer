@@ -360,9 +360,12 @@ class ceilometer(
     control_exchange     => $control_exchange,
   }
 
-  oslo::cache { 'ceilometer_config':
-    backend                => $cache_backend,
-    memcache_servers       => $memcache_servers,
-    manage_backend_package => $manage_backend_package,
+  if !is_service_default($memcache_servers) {
+    oslo::cache { 'ceilometer_config':
+      enabled                => true,
+      backend                => $cache_backend,
+      memcache_servers       => $memcache_servers,
+      manage_backend_package => $manage_backend_package,
+    }
   }
 }
