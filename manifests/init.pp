@@ -470,7 +470,11 @@ please use memcache_servers instead.")
     control_exchange     => $control_exchange,
   }
 
-  oslo::cache { 'ceilometer_config':
-    memcache_servers => $memcache_servers_real,
+  if !is_service_default($memcache_servers_real) {
+    oslo::cache { 'ceilometer_config':
+      enabled          => true,
+      backend          => 'oslo_cache.memcache_pool',
+      memcache_servers => $memcache_servers_real,
+    }
   }
 }
