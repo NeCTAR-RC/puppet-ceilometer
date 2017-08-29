@@ -30,6 +30,7 @@ class ceilometer::agent::compute (
   $enabled                   = true,
   $package_ensure            = 'present',
   $instance_discovery_method = $::os_service_default,
+  $manage_user_groups        = false,
 ) inherits ceilometer {
 
   warning('This class is deprecated. Please use ceilometer::agent::polling with compute namespace instead.')
@@ -49,7 +50,7 @@ class ceilometer::agent::compute (
     tag    => ['openstack', 'ceilometer-package'],
   }
 
-  if $::ceilometer::params::libvirt_group {
+  if $::ceilometer::params::libvirt_group and $manage_user_groups {
     User['ceilometer'] {
       groups => ['nova', $::ceilometer::params::libvirt_group]
     }
