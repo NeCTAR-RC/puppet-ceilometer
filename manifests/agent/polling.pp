@@ -85,6 +85,7 @@ class ceilometer::agent::polling (
   $central_namespace         = true,
   $compute_namespace         = true,
   $ipmi_namespace            = true,
+  $objectstore_namespace     = false,
   $instance_discovery_method = $::os_service_default,
   $resource_update_interval  = $::os_service_default,
   $resource_cache_expiry     = $::os_service_default,
@@ -161,6 +162,12 @@ class ceilometer::agent::polling (
     $ipmi_namespace_name = undef
   }
 
+  if $objectstore_namespace {
+    $objectstore_namespace_name = 'objectstore'
+  } else {
+    $objectstore_namespace_name = ''
+  }
+
   package { 'ceilometer-polling':
     ensure => $package_ensure,
     name   => $::ceilometer::params::agent_polling_package_name,
@@ -170,7 +177,8 @@ class ceilometer::agent::polling (
   $namespaces_real = delete_undef_values([
     $central_namespace_name,
     $compute_namespace_name,
-    $ipmi_namespace_name
+    $ipmi_namespace_name,
+    $objectstore_namespace_name
   ])
 
   if empty($namespaces_real) {
