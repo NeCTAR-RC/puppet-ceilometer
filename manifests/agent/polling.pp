@@ -38,6 +38,10 @@
 #   (Optional) Use ipmi namespace for polling agent.
 #   Defaults to true.
 #
+# [*objectstore_namespace*]
+#   (Optional) Use objectstore namespace for polling agent.
+#   Defaults to false.
+#
 # [*instance_discovery_method*]
 #   (Optional) method to discovery instances running on compute node
 #   Defaults to $facts['os_service_default']
@@ -132,6 +136,7 @@ class ceilometer::agent::polling (
   Boolean $central_namespace              = true,
   Boolean $compute_namespace              = true,
   Boolean $ipmi_namespace                 = true,
+  Boolean $objectstore_namespace          = false,
   $instance_discovery_method              = $facts['os_service_default'],
   $resource_update_interval               = $facts['os_service_default'],
   $resource_cache_expiry                  = $facts['os_service_default'],
@@ -240,10 +245,17 @@ class ceilometer::agent::polling (
     }
   }
 
+  if $objectstore_namespace {
+    $objectstore_namespace_name = 'objectstore'
+  } else {
+    $objectstore_namespace_name = ''
+  }
+
   $namespaces_real = delete_undef_values([
     $central_namespace_name,
     $compute_namespace_name,
     $ipmi_namespace_name,
+    $objectstore_namespace_name,
   ])
 
   if empty($namespaces_real) or $separate_services {
