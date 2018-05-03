@@ -65,6 +65,7 @@ class ceilometer::agent::polling (
   $central_namespace         = true,
   $compute_namespace         = true,
   $ipmi_namespace            = true,
+  $objectstore_namespace     = false,
   $coordination_url          = $::os_service_default,
   $instance_discovery_method = $::os_service_default,
   $manage_polling            = false,
@@ -112,6 +113,12 @@ class ceilometer::agent::polling (
     $ipmi_namespace_name = ''
   }
 
+  if $objectstore_namespace {
+    $objectstore_namespace_name = 'objectstore'
+  } else {
+    $objectstore_namespace_name = ''
+  }
+
   if $manage_service {
     if $enabled {
       $service_ensure = 'running'
@@ -120,7 +127,7 @@ class ceilometer::agent::polling (
     }
   }
 
-  $namespaces = delete([$central_namespace_name, $compute_namespace_name, $ipmi_namespace_name], '')
+  $namespaces = delete([$central_namespace_name, $compute_namespace_name, $ipmi_namespace_name, $objectstore_namespace_name], '')
   $namespaces_real = inline_template('<%= @namespaces.select { |x| x and x !~ /^undef/ }.compact.join "," %>')
 
   package { 'ceilometer-polling':
