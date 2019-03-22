@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e23eed9d_dbb92a14",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2019-03-22T05:28:35Z",
+      "side": 1,
+      "message": "wondering if we should be patching this is oslo::cache instead, and perhaps validating incoherent options there too (enabled \u003d\u003e true, memcache_servers \u003d\u003e $::os_service_default)",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 5
+      },
+      "revId": "f76d79e10f52fef8b8943f6e49d719bdc1c7dfb5",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": true
+    }
+  ]
+}
