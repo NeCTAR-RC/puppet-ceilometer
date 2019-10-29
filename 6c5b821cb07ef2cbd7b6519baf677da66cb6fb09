@@ -1,0 +1,8 @@
+Verified+1: Jenkins <no-reply+jenkins@nectar.org.au>
+Code-Review+2: Sam Morrison <sam.morrison@unimelb.edu.au>
+Code-Review+2: Andy Botting <andy.botting@ardc.edu.au>
+Submitted-by: Jake Yip <jake.yip@unimelb.edu.au>
+Submitted-at: Tue, 29 Oct 2019 14:06:13 +1100
+Reviewed-on: https://review.rc.nectar.org.au/c/NeCTAR-RC/puppet-ceilometer/+/20202
+Project: NeCTAR-RC/puppet-ceilometer
+Branch: refs/heads/nectar/stein
