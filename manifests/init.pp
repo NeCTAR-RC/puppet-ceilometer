@@ -362,7 +362,11 @@ class ceilometer(
     control_exchange     => $control_exchange,
   }
 
-  oslo::cache { 'ceilometer_config':
-    memcache_servers => $memcache_servers,
+  if !is_service_default($memcache_servers) {
+    oslo::cache { 'ceilometer_config':
+      enabled          => true,
+      backend          => 'oslo_cache.memcache_pool',
+      memcache_servers => $memcache_servers,
+    }
   }
 }
