@@ -413,20 +413,6 @@ class ceilometer(
   }
   include ceilometer::cache
 
-  group { 'ceilometer':
-    ensure  => present,
-    name    => 'ceilometer',
-    require => Anchor['ceilometer::install::end'],
-  }
-
-  user { 'ceilometer':
-    ensure  => present,
-    name    => 'ceilometer',
-    gid     => 'ceilometer',
-    system  => true,
-    require => Anchor['ceilometer::install::end'],
-  }
-
   package { 'ceilometer-common':
     ensure => $package_ensure,
     name   => $::ceilometer::params::common_package_name,
