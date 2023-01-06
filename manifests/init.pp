@@ -482,18 +482,4 @@ class ceilometer(
     rpc_response_timeout      => $rpc_response_timeout,
     control_exchange          => $control_exchange,
   }
-
-  if !is_service_default($memcache_servers) {
-    oslo::cache { 'ceilometer_config':
-      enabled                => true,
-      backend                => $cache_backend,
-      memcache_servers       => $memcache_servers,
-      tls_enabled            => $cache_tls_enabled,
-      tls_cafile             => $cache_tls_cafile,
-      tls_certfile           => $cache_tls_certfile,
-      tls_keyfile            => $cache_tls_keyfile,
-      tls_allowed_ciphers    => $cache_tls_allowed_ciphers,
-      manage_backend_package => $manage_backend_package,
-    }
-  }
 }
